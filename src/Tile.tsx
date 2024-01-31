@@ -16,7 +16,6 @@ const Tile: React.FC<TileProps> = ({isTileDisable, tiles, index, empty, setEmpty
         }
         setEmpty(index)
     }
-
     return (
         <div>
             <button

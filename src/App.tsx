@@ -17,9 +17,6 @@ const App: React.FC = () => {
 
     const handleDisable = () => {
         let booleanArray: (boolean | number)[] = [...tiles]
-        // console.log(`zero is here - ${empty}`)
-        // console.log(`row - ${row(empty)}`)
-        // console.log(`col - ${col(empty)}`)
         tiles.forEach((el, index) => {
             if ((row(index) === row(empty) && ((empty + 1) === index || (empty - 1) === index)) || (col(index) === col(empty) && ((empty + 4) === index || (empty - 4) === index))) {
                 array.push(index)
@@ -31,12 +28,11 @@ const App: React.FC = () => {
         setIsTileDisable(booleanArray)
     }
 
-    const checkGame = () => {
-        if (tiles.every((el, i) => el - 1 === i)) {
-            setIsTileDisable(isTileDisable.map(el => true))
-            console.log("победа!")
-        }
-    }
+    // const checkGame = () => {
+    //     if (tiles.every((el, i) => el - 1 === i)) {
+    //         setIsTileDisable(isTileDisable.map(el => true))
+    //     }
+    // }
 
     useEffect(() => {
         setEmpty(tiles.indexOf(0, 0))
@@ -46,13 +42,12 @@ const App: React.FC = () => {
         handleDisable()
     }, [empty, setEmpty]);
 
-    useEffect(() => {
-        checkGame();
-    }, [tiles, setTiles]);
+    // useEffect(() => {
+    //     checkGame();
+    // }, [tiles, setTiles]);
 
     return (
         <div className="App">
-            {/*<h1>{JSON.stringify(isTileDisable)}</h1>*/}
             <Board
                 tiles={tiles}
                 setTiles={setTiles}
