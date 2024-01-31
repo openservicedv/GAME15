@@ -6,7 +6,7 @@ const App: React.FC = () => {
 
     const [tiles, setTiles] = useState(Array(16)
         .fill(0)
-        .map((el, index) => index)
+        .map((el, index) => index + 1)
         .sort(() => Math.random() - 0.4))
     const [empty, setEmpty] = useState(0)
     const [isTileDisable, setIsTileDisable] = useState(Array(16)
@@ -18,7 +18,8 @@ const App: React.FC = () => {
     const handleDisable = () => {
         let booleanArray: (boolean | number)[] = [...tiles]
         tiles.forEach((el, index) => {
-            if ((row(index) === row(empty) && ((empty + 1) === index || (empty - 1) === index)) || (col(index) === col(empty) && ((empty + 4) === index || (empty - 4) === index))) {
+            if ((row(index) === row(empty) && ((empty + 1) === index || (empty - 1) === index)) ||
+                (col(index) === col(empty) && ((empty + 4) === index || (empty - 4) === index))) {
                 array.push(index)
             }
         })
@@ -28,26 +29,33 @@ const App: React.FC = () => {
         setIsTileDisable(booleanArray)
     }
 
-    // const checkGame = () => {
-    //     if (tiles.every((el, i) => el - 1 === i)) {
-    //         setIsTileDisable(isTileDisable.map(el => true))
-    //     }
-    // }
+    const restart = () => {
+
+    }
+
+    const checkGame = () => {
+        if (tiles.every((el, i) => el - 1 === i)) {
+            setIsTileDisable(isTileDisable.map(el => true))
+        }
+    }
 
     useEffect(() => {
-        setEmpty(tiles.indexOf(0, 0))
+        setEmpty(tiles.indexOf(16, 0))
     }, []);
 
     useEffect(() => {
         handleDisable()
     }, [empty, setEmpty]);
 
-    // useEffect(() => {
-    //     checkGame();
-    // }, [tiles, setTiles]);
+    useEffect(() => {
+        checkGame();
+    }, [tiles, setTiles]);
 
     return (
         <div className="App">
+            <button
+            onClick={restart}
+            >Restart</button>
             <Board
                 tiles={tiles}
                 setTiles={setTiles}
