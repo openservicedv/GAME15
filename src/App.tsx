@@ -6,7 +6,7 @@ const App: React.FC = () => {
 
     const [tiles, setTiles] = useState(Array(16)
         .fill(0)
-        .map((el, index) => index)
+        .map((el, index) => index + 1)
         .sort(() => Math.random() - 0.4))
     const [empty, setEmpty] = useState(0)
     const [isTileDisable, setIsTileDisable] = useState(Array(16)
@@ -17,11 +17,11 @@ const App: React.FC = () => {
 
     const handleDisable = () => {
         let booleanArray: (boolean | number)[] = [...tiles]
-        console.log(`zero is here - ${empty}`)
-        console.log(`row - ${row(empty)}`)
-        console.log(`col - ${col(empty)}`)
+        // console.log(`zero is here - ${empty}`)
+        // console.log(`row - ${row(empty)}`)
+        // console.log(`col - ${col(empty)}`)
         tiles.forEach((el, index) => {
-            if (el <= 15 && el >= 0) {
+            if (1) {
                 if ((row(index) === row(empty) && ((empty + 1) === index || (empty - 1) === index)) || (col(index) === col(empty) && ((empty + 4) === index || (empty - 4) === index))) {
                     array.push(index)
                 }
@@ -43,7 +43,6 @@ const App: React.FC = () => {
 
     useEffect(() => {
         setEmpty(tiles.indexOf(0, 0))
-        // console.log(empty)
     }, []);
 
     useEffect(() => {

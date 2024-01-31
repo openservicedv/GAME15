@@ -11,8 +11,6 @@ interface TileProps {
 
 const Tile: React.FC<TileProps> = ({isTileDisable, tiles, index, empty, setEmpty, el}) => {
     const handleTileClick = () => {
-        console.log(index)
-        console.log(tiles[index])
         if (tiles[index]) {
             [tiles[index], tiles[empty]] = [tiles[empty], tiles[index]]
         }
@@ -25,7 +23,7 @@ const Tile: React.FC<TileProps> = ({isTileDisable, tiles, index, empty, setEmpty
                 className={tiles[index] ? "tile-gray" : "tile-blue"}
                 disabled={isTileDisable.find((el, i) => i === index)}
                 onClick={handleTileClick}
-            >{el === 0 ? "" : el}
+            >{el === 0 ? el : el}, {index}
             </button>
         </div>
     );
