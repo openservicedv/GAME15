@@ -2,6 +2,33 @@
   text-align: center;
 }
 
+.tile-blue {
+  border: solid 1px lightgray;
+  width: 100px;
+  height: 100px;
+  font-size: 20px;
+  background: white;
+}
+
+.tile-gray {
+  border: solid 1px lightgray;
+  width: 100px;
+  height: 100px;
+  font-size: 20px;
+  background: gray;
+}
+
+.container {
+  border: dashed 1px gray;
+  width: 400px;
+  height: 400px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -36,3 +63,4 @@
     transform: rotate(360deg);
   }
 }
+

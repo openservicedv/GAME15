@@ -3,32 +3,32 @@ import Tile from "./Tile";
 
 interface BoardProps {
     tiles: number[]
+    empty: number
+    isTileDisable: boolean[]
+    setTiles: (tiles: number[]) => void
+    setEmpty: (empty: number) => void
+    setIsTileDisable: (isTileDisable: boolean[]) => void
 }
 
-const Board: React.FC<BoardProps> = ({tiles}) => {
+const Board: React.FC<BoardProps> = ({tiles, empty, setEmpty, isTileDisable, setIsTileDisable}) => {
 
-    const renderRow = (rowIndex: number) => {
-        return (
-            <div>
-
-                {tiles.slice(rowIndex * 4, (rowIndex + 1) * 4).map((value, index) => (
+    return (
+        <div className="container">
+            <div className="board">
+                {tiles.map((el, index) => (
                     <Tile
                         key={index}
-                        value={value}
-
+                        index={index}
+                        el={el}
+                        empty={empty}
+                        setEmpty={setEmpty}
+                        isTileDisable={isTileDisable}
+                        tiles={tiles}
                     />
                 ))}
             </div>
-        )
-    }
-
-    return (
-        <div>
-            <div>
-                {[0, 1, 2, 3].map(renderRow)}
-            </div>
         </div>
-    );
-};
+    )
+}
 
 export default Board;
