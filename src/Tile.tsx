@@ -20,10 +20,10 @@ const Tile: React.FC<TileProps> = ({isTileDisable, tiles, index, empty, setEmpty
     return (
         <div>
             <button
-                className={tiles[index] ? "tile-gray" : "tile-blue"}
+                className={tiles[index] ? "tile-gray" : "tile-white"}
                 disabled={isTileDisable.find((el, i) => i === index)}
                 onClick={handleTileClick}
-            >{el === 0 ? el : el}, {index}
+            >{el === 0 ? "" : el}
             </button>
         </div>
     );
