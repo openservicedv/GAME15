@@ -21,12 +21,12 @@ const App: React.FC = () => {
         console.log(`row - ${row(empty)}`)
         console.log(`col - ${col(empty)}`)
         tiles.forEach((el, index) => {
-            if (el <= 15 && el >= 0 && row(index) === row(empty) && ((empty + 1) === index || (empty - 1) === index)) {
-                array.push(index)
+            if (el <= 15 && el >= 0) {
+                if ((row(index) === row(empty) && ((empty + 1) === index || (empty - 1) === index)) || (col(index) === col(empty) && ((empty + 4) === index || (empty - 4) === index))) {
+                    array.push(index)
+                }
             }
-            if (el <= 15 && el >= 0 && col(index) === col(empty) && ((empty + 4) === index || (empty - 4) === index)) {
-                array.push(index)
-            }
+
         })
         array.forEach(element => {
             booleanArray = booleanArray.map((el, i) => (i === element ? false : el))
